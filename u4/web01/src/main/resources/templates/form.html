@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Object</title>
+</head>
+<body>
+<div layout:fragment="customContent">
+    <form action="#" th:action="${formObj.id == 0 ? '/create' : '/update'}" th:object="${formObj}" method="POST">
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li th:each="errMsg : ${#fields.allErrors()}" th:text="${errMsg}" th:class="text-danger" />
+            </ul>
+        </div>
+        <input type="hidden" th:field="*{id}">               
+        <div class="form-group">
+            <label for="value1">Text Value</label>
+            <input type="text" class="form-control" id="value1" placeholder="Contact Name" th:field="*{value1}">
+            <span th:if="${#fields.hasErrors('value1')}" th:errors="*{value1}" th:errorclass="text-danger">value1 Error</span>
+        </div>
+        <div class="form-group">
+            <label for="value2">Numeric Value</label>
+            <input type="number" class="form-control" id="value2" placeholder="0 to 100" th:field="*{value2}">
+            <span th:if="${#fields.hasErrors('value2')}" th:errors="*{value2}" th:errorclass="text-danger">value2 Error</span>
+        </div>
+        <div class="form-group">
+            <label for="value3">Date Value</label>
+            <input type="date" class="form-control" id="value3" placeholder="YYYY-MM-DD" th:field="*{value3}">
+            <span th:if="${#fields.hasErrors('value3')}" th:errors="*{value3}" th:errorclass="text-danger">value3 Error</span>
+        </div>
+        <button type="submit" class="btn btn-primary" th:text="${formObj.id == 0 ? 'Create' : 'Update'}"></button> &nbsp;&nbsp;&nbsp;
+        <a href="#" th:href="@{/index}" class="btn btn-warning">Back</a>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Occur</title>
+</head>
+<body>
+    <div layout:fragment="customContent"></div>
+        <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">errObj</h1>
+                <p class="fs-3" th:text="'[' + ${errObj.errId} + ':' + ${errObj.errCode} + '] -' + ${errObj.errMsg}" />
+                <a th:href="@{{url}(url = ${errObj.rtnPath})}" class="btn btn-primary">back</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
