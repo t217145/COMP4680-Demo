@@ -13,13 +13,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-    // @Before("execution(* comp4680sed.unit3.*.*(..))")
+    @Before("execution(* comp4680sed.unit3.*.*(..))")
     public void beforeMethodExecution() {
         System.out.println("LoggingAspect: Executing before the method...");
     }
 
-    // @AfterReturning(pointcut = "execution(* comp4680sed.unit3.*.*(..))",
-    // returning = "result")
+    @AfterReturning(pointcut = "execution(* comp4680sed.unit3.*.*(..))", returning = "result")
     public void afterMethodExecution(Object result) {
         System.out.println("LoggingAspect: Executing after the method with result: " + result);
     }
